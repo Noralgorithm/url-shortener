@@ -51,8 +51,8 @@ export default function MainPage() {
 
   return (
     <main className="w-screen h-screen flex flex-col justify-center items-center gap-16 pb-16 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black">
-      <div className="flex flex-col gap-16">
-        <h1 className="font-extrabold text-transparent text-center text-3xl sm:text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+      <div className="flex flex-col gap-16 items-center">
+        <h1 className="font-extrabold text-transparent text-center text-5xl sm:text-7xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
           Nora&apos;s URL shortener
         </h1>
         <div className="flex flex-col justify-center items-center gap-4 w-full px-12 max-w-2xl">
@@ -60,6 +60,7 @@ export default function MainPage() {
             isRequired
             label="Your URL"
             variant="bordered"
+            size="lg"
             onChange={handleChange}
           ></Input>
           <Button
@@ -67,6 +68,7 @@ export default function MainPage() {
             isLoading={isLoading}
             variant="shadow"
             color="primary"
+            size="lg"
             className="w-max"
             onClick={createShortUrl}
           >
@@ -77,6 +79,7 @@ export default function MainPage() {
           symbol=""
           variant="shadow"
           color="success"
+          size="lg"
           className={`${
             shortUrlId ? "opacity-100" : "opacity-0"
           } mx-2 transition delay-150`}

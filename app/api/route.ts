@@ -32,7 +32,6 @@ export async function POST(req: NextRequest) {
       data: { url, shortened_url_id },
       select: { url: true, shortened_url_id: true },
     });
-
     return NextResponse.json(newUrl, { status: 201 });
   } catch (error) {
     return NextResponse.json("Error shortening URL!", { status: 400 });
