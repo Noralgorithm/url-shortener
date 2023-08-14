@@ -4,13 +4,7 @@ import { prisma } from "@/prisma/client";
 import { generateRandomString } from "@/utils/generate-random-string";
 
 export async function GET(_req: NextRequest) {
-  const urls = await prisma.urls.findMany({
-    select: {
-      shortened_url_id: true,
-      url: true,
-    },
-  });
-  return NextResponse.json(urls);
+  return NextResponse.json({ Connection: true });
 }
 
 export async function POST(req: NextRequest) {

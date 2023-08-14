@@ -60,6 +60,12 @@ export default function MainPage() {
   };
 
   useEffect(() => {
+    (async () => {
+      fetch("/api", {
+        method: "GET",
+        cache: "no-store",
+      });
+    })();
     baseUrl.current = window.location.href;
   }, []);
 
