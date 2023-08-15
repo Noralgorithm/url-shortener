@@ -103,10 +103,10 @@ export default function MainPage() {
           symbol=""
           variant="shadow"
           color="success"
-          size="lg"
+          size="md"
           className={`${
             shortUrlId ? "opacity-100" : "opacity-0"
-          } mx-2 transition delay-150`}
+          } mx-2 max-w-full transition delay-150`}
         >
           {baseUrl.current + shortUrlId}
         </Snippet>
