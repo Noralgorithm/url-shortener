@@ -71,7 +71,7 @@ export default function MainPage() {
   }, []);
 
   return (
-    <main className="w-screen h-screen flex flex-col justify-center items-center gap-16 pb-16 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black">
+    <main className="w-screen h-screen overflow-hidden flex flex-col justify-center items-center gap-16 pb-16 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black">
       <div className="flex flex-col gap-16 items-center">
         <h1
           className="font-extrabold text-transparent text-center text-5xl sm:text-7xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
