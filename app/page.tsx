@@ -27,6 +27,7 @@ export default function MainPage() {
       });
 
       const url = await response.json();
+      console.log(url);
       setShortUrlId(url.shortened_url_id);
     } catch (error) {
       console.error(error);
@@ -46,7 +47,7 @@ export default function MainPage() {
 
   const testGet = async () => {
     try {
-      const response = await fetch(`/api/test`, {
+      const response = await fetch(`/api/`, {
         method: "GET",
         cache: "no-store",
       });

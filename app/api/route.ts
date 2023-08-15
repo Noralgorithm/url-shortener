@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
+import { kv } from "@vercel/kv";
 
-import { prisma } from "@/prisma/client";
 import { generateRandomString } from "@/utils/generate-random-string";
 
 export async function GET(_req: NextRequest) {
-  return NextResponse.json({ Connection: true });
+  return NextResponse.json({ hello: "world" });
 }
 
 export async function POST(req: NextRequest) {
@@ -13,27 +13,16 @@ export async function POST(req: NextRequest) {
 
     new URL(url);
 
-    const urlInDb = await prisma.urls.findFirst({
-      where: { url: url },
-      select: { url: true, shortened_url_id: true },
-    });
+    const urlInDb = await kv.get(url);
 
-    if (urlInDb) return NextResponse.json(urlInDb);
+    if (urlInDb) return NextResponse.json({ shortened_url_id: urlInDb });
 
     const shortened_url_id = generateRandomString(8);
 
-    const newUrl = await prisma.urls.create({
-      data: { url, shortened_url_id },
-      select: { url: true, shortened_url_id: true },
-    });
-    return NextResponse.json(newUrl, { status: 201 });
+    await kv.set(url, shortened_url_id);
+
+    return NextResponse.json({ shortened_url_id }, { status: 201 });
   } catch (error) {
     return NextResponse.json("Error shortening URL!", { status: 400 });
   }
-}
-
-export async function DELETE(_req: NextRequest) {
-  await prisma.urls.deleteMany();
-
-  return NextResponse.json("Hello world from DELETE request!");
 }
