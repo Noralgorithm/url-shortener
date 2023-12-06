@@ -7,11 +7,6 @@ import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "URL shortener",
-  description: "Noralgorithm's personal URL shortener project.",
-};
-
 export default function RootLayout({ children }) {
   useEffect(
     () =>
